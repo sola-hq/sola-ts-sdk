@@ -1,8 +1,15 @@
 {
-  "name": "sola-ts-sdk-monorepo",
+  "name": "sola-ts-sdk",
   "version": "1.0.0",
-  "description": "",
+  "homepage": "https://github.com/sola-hq/sola-ts-sdk#readme",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sola-hq/sola-ts-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sola-hq/sola-ts-sdk/issues"
+  },
   "scripts": {
     "build": "turbo run build",
     "test": "turbo run test",
@@ -10,8 +17,8 @@
     "release-sdk:publish": "pnpm build && pnpm changeset publish"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Sola HQ",
+  "license": "MIT",
   "packageManager": "pnpm@10.10.0",
   "devDependencies": {
     "@changesets/cli": "^2.29.5",
