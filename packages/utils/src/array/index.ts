@@ -1,3 +1,2 @@
-export { range } from './range.js';
-export { shuffle } from './shuffle.js';
-
+export * from './range.js';
+export * from './shuffle.js';

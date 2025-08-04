@@ -1,22 +1,20 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-	entry: ['src/index.ts'],
+	entry: [
+		'src/index.ts',
+	],
 	format: ['cjs', 'esm'],
 	dts: true,
 	outDir: 'dist',
+	clean: true,
 	splitting: false,
 	sourcemap: true,
-	clean: true,
 	treeshake: true,
 	minify: false,
 	outExtension: ({ format }) => ({
-		js: format === 'esm' ? '.mjs' : '.cjs',
+		js: format === 'esm' ? '.mjs' : '.js',
 	}),
 	tsconfig: './tsconfig.json',
-	define: {
-		global: 'globalThis',
-		process: 'process',
-		Buffer: 'Buffer',
-	}
+	external: ['bn.js', '@noble/hashes', '@scure/base'],
 });
