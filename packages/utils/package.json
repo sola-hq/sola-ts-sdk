@@ -1,0 +1,100 @@
+{
+  "name": "@sola-hq/utils",
+  "version": "1.0.0",
+  "description": "",
+  "type": "commonjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./array": {
+      "types": "./dist/array/index.d.ts",
+      "import": "./dist/array/index.mjs",
+      "require": "./dist/array/index.js"
+    },
+    "./base58": {
+      "types": "./dist/base58/index.d.ts",
+      "import": "./dist/base58/index.mjs",
+      "require": "./dist/base58/index.js"
+    },
+    "./base64": {
+      "types": "./dist/base64/index.d.ts",
+      "import": "./dist/base64/index.mjs",
+      "require": "./dist/base64/index.js"
+    },
+    "./bigint": {
+      "types": "./dist/bigint/index.d.ts",
+      "import": "./dist/bigint/index.mjs",
+      "require": "./dist/bigint/index.js"
+    },
+    "./bn": {
+      "types": "./dist/bn/index.d.ts",
+      "import": "./dist/bn/index.mjs",
+      "require": "./dist/bn/index.js"
+    },
+    "./buffer": {
+      "types": "./dist/buffer/index.d.ts",
+      "import": "./dist/buffer/index.mjs",
+      "require": "./dist/buffer/index.js"
+    },
+    "./compact": {
+      "import": "./dist/compact/index.mjs",
+      "require": "./dist/compact/index.js"
+    },
+    "./float": {
+      "types": "./dist/float/index.d.ts",
+      "import": "./dist/float/index.mjs",
+      "require": "./dist/float/index.js"
+    },
+    "./hex": {
+      "types": "./dist/hex/index.d.ts",
+      "import": "./dist/hex/index.mjs",
+      "require": "./dist/hex/index.js"
+    },
+    "./is": {
+      "types": "./dist/is/index.d.ts",
+      "import": "./dist/is/index.mjs",
+      "require": "./dist/is/index.js"
+    },
+    "./number": {
+      "types": "./dist/number/index.d.ts",
+      "import": "./dist/number/index.mjs",
+      "require": "./dist/number/index.js"
+    },
+    "./string": {
+      "types": "./dist/string/index.d.ts",
+      "import": "./dist/string/index.mjs",
+      "require": "./dist/string/index.js"
+    },
+    "./u8a": {
+      "types": "./dist/u8a/index.d.ts",
+      "import": "./dist/u8a/index.mjs",
+      "require": "./dist/u8a/index.js"
+    }
+  },
+  "scripts": {
+    "test": "vitest --config vitest.config.mjs",
+    "build": "tsup src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@noble/hashes": "^1.8.0",
+    "@scure/base": "^1.2.6",
+    "bn.js": "^5.2.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "@types/bn.js": "^5.2.0",
+    "tsup": "^8.5.0"
+  }
+}
