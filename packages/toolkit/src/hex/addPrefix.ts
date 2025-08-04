@@ -10,7 +10,7 @@ import { hexHasPrefix } from './hasPrefix.js';
  * <BR>
  *
  * ```javascript
- * import { addHexPrefix } from '@sola-hq/utils';
+ * import { addHexPrefix } from '@sola-hq/toolkit';
  *
  * console.log('With prefix', addHexPrefix('0a0b12')); // => 0x0a0b12
  * ```

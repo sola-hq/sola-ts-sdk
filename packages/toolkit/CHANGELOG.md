@@ -1,4 +1,4 @@
-# @sola-hq/utils
+# @sola-hq/toolkit
 
 ## 1.0.1
 

@@ -25,9 +25,9 @@ importers:
 
   packages/bitcoin:
     dependencies:
-      '@sola-hq/utils':
+      '@sola-hq/toolkit':
         specifier: workspace:*
-        version: link:../utils
+        version: link:../toolkit
     devDependencies:
       tsup:
         specifier: ^8.5.0
@@ -44,9 +44,9 @@ importers:
       '@polkadot/api':
         specifier: ^16.4.3
         version: 16.4.3
-      '@sola-hq/utils':
+      '@sola-hq/toolkit':
         specifier: workspace:*
-        version: link:../utils
+        version: link:../toolkit
     devDependencies:
       tsup:
         specifier: ^8.5.0
@@ -67,7 +67,7 @@ importers:
         specifier: ^5.0.4
         version: 5.8.3
 
-  packages/utils:
+  packages/toolkit:
     dependencies:
       '@noble/hashes':
         specifier: ^1.8.0

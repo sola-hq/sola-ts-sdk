@@ -12,7 +12,7 @@ import { stringify } from '../stringify.js';
  * <BR>
  *
  * ```javascript
- * import { isJsonObject } from '@sola-hq/utils';
+ * import { isJsonObject } from '@sola-hq/toolkit';
  *
  * isJsonObject({}); // => true
  * isJsonObject({
