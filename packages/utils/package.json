@@ -1,6 +1,6 @@
 {
   "name": "@sola-hq/utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Sola SDK utils",
   "type": "commonjs",
   "main": "./dist/index.cjs",
