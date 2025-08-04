@@ -13,6 +13,7 @@
   "scripts": {
     "build": "turbo run build",
     "test": "turbo run test",
+    "ci:publish": "pnpm publish -r",
     "release-sdk:version": "pnpm changeset version",
     "release-sdk:publish": "pnpm build && pnpm changeset publish"
   },
