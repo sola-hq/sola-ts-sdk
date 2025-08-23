@@ -1,19 +1,16 @@
 import type { BN } from '../bn/bn.js';
-import type { ToNumberOptions, ToBigInt, ToBn } from '../types.js';
+import type { ToBigInt, ToBn, ToNumberOptions } from '../types.js';
 
 import { nToBigInt } from './toBigInt.js';
 
 const DIV = BigInt(256);
-const NEG_MASK = BigInt(0xff);
 
 function toU8a(value: bigint, isLe: boolean): Uint8Array {
   const arr: number[] = [];
 
   while (value !== BigInt(0)) {
     const mod = value % DIV;
-    const val = Number(
-      mod
-    );
+    const val = Number(mod);
 
     if (isLe) {
       arr.push(val);
@@ -31,7 +28,10 @@ function toU8a(value: bigint, isLe: boolean): Uint8Array {
  * @name nToU8a
  * @summary Creates a Uint8Array object from a bigint.
  */
-export function nToU8a<T extends ToBn | ToBigInt>(value?: T | BN | bigint | number | null, { bitLength = -1, isLe = true, isNegative = false }: ToNumberOptions = {}): Uint8Array {
+export function nToU8a<T extends ToBn | ToBigInt>(
+  value?: T | BN | bigint | number | null,
+  { bitLength = -1, isLe = true, isNegative = false }: ToNumberOptions = {},
+): Uint8Array {
   let valueBi = nToBigInt(value);
 
   if (valueBi === BigInt(0)) {
@@ -43,11 +43,13 @@ export function nToU8a<T extends ToBn | ToBigInt>(value?: T | BN | bigint | numb
   // Handle negative numbers for two's complement
   if (isNegative && valueBi < BigInt(0)) {
     // Determine the effective bit length if not provided
-    const effectiveBitLength = bitLength === -1
-      ? Math.ceil(valueBi.toString(2).length / 8) * 8 // Smallest multiple of 8
-      : bitLength;
+    const effectiveBitLength =
+      bitLength === -1
+        ? Math.ceil(valueBi.toString(2).length / 8) * 8 // Smallest multiple of 8
+        : bitLength;
 
     const twoPowN = BigInt(1) << BigInt(effectiveBitLength);
+
     valueBi = twoPowN + valueBi;
   }
 
@@ -61,9 +63,12 @@ export function nToU8a<T extends ToBn | ToBigInt>(value?: T | BN | bigint | numb
   const output = new Uint8Array(byteLength);
 
   // Truncate u8a if it's larger than byteLength
-  const truncatedU8a = u8a.length > byteLength
-    ? (isLe ? u8a.slice(0, byteLength) : u8a.slice(u8a.length - byteLength))
-    : u8a;
+  const truncatedU8a =
+    u8a.length > byteLength
+      ? isLe
+        ? u8a.slice(0, byteLength)
+        : u8a.slice(u8a.length - byteLength)
+      : u8a;
 
   output.set(truncatedU8a, isLe ? 0 : byteLength - truncatedU8a.length);
 

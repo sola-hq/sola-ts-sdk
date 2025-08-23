@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest';
 import { faker } from '@faker-js/faker';
+import { describe, expect, it } from 'vitest';
+
 import { isBoolean, isBooleanLike } from './boolean.js';
 
 describe('isBoolean', (): void => {
@@ -27,12 +28,19 @@ describe('isBoolean', (): void => {
   });
 
   it('should handle faker generated boolean-like values', (): void => {
-    const booleanString = faker.helpers.arrayElement(['true', 'false', '1', '0']);
+    const booleanString = faker.helpers.arrayElement([
+      'true',
+      'false',
+      '1',
+      '0',
+    ]);
+
     expect(isBooleanLike(booleanString)).toEqual(true);
   });
 
   it('should return false for non-boolean-like values', (): void => {
     const nonBooleanString = faker.string.alphanumeric(5);
+
     expect(isBooleanLike(nonBooleanString)).toEqual(false);
   });
 });

@@ -1,5 +1,3 @@
-
-
 /**
  * @name u8aEmpty
  * @summary Tests for a `Uint8Array` for emptyness

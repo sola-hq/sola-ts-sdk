@@ -1,5 +1,3 @@
-
-
 import type { BitLength } from './types.js';
 
 /** @internal */

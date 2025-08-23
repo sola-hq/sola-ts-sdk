@@ -1,8 +1,14 @@
-import { describe, expect, it, test } from 'vitest';
 import { faker } from '@faker-js/faker';
+import { describe, expect, it, test } from 'vitest';
 
 import { nToU8a } from './toU8a.js';
-export const TESTS: [isLe: boolean, isNegative: boolean, numarr: number[], strval: string][] = [
+
+export const TESTS: [
+  isLe: boolean,
+  isNegative: boolean,
+  numarr: number[],
+  strval: string,
+][] = [
   // LE, positive numbers
   [true, false, [0x12], '18'],
   [true, false, [0x12, 0x34], '13330'],
@@ -10,7 +16,15 @@ export const TESTS: [isLe: boolean, isNegative: boolean, numarr: number[], strva
   [true, false, [0x12, 0x34, 0x56, 0x78], '2018915346'],
   [true, false, [0x12, 0x34, 0x56, 0x78, 0x9a], '663443878930'],
   [true, false, [0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc], '207371629900818'],
-  [true, false, [0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78], '159954953172672629770948536149615195154'],
+  [
+    true,
+    false,
+    [
+      0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78,
+      0x12, 0x34, 0x56, 0x78,
+    ],
+    '159954953172672629770948536149615195154',
+  ],
   // LE, positive numbers (w/ signed flag)
   [true, true, [12], '12'],
   [true, true, [210, 4], '1234'],
@@ -38,56 +52,63 @@ export const TESTS: [isLe: boolean, isNegative: boolean, numarr: number[], strva
   [false, true, [0xf2, 0x34, 0x56, 0x78], '-231451016'],
   [false, false, [0x12, 0x34, 0x56, 0x78, 0x9a], '78187493530'],
   [false, false, [0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc], '20015998343868'],
-  [false, false, [0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78], '24197857161011715162171839636988778104']
+  [
+    false,
+    false,
+    [
+      0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78,
+      0x12, 0x34, 0x56, 0x78,
+    ],
+    '24197857161011715162171839636988778104',
+  ],
 ];
 
 describe('nToU8a', (): void => {
   describe('conversion tests', (): void => {
-    test.each(TESTS)('converts from ${strval} (bitLength=${bitLength}, isLe=${isLe}, isNegative=${isNegative}', (isLe, isNegative, numarr, strval): void => {
-      const bitLength = numarr.length * 8;
+    test.each(TESTS)(
+      'converts from ${strval} (bitLength=${bitLength}, isLe=${isLe}, isNegative=${isNegative}',
+      (isLe, isNegative, numarr, strval): void => {
+        const bitLength = numarr.length * 8;
 
-      expect(
-        nToU8a(
-          BigInt(strval),
-          { bitLength, isLe, isNegative }
-        )
-      ).toEqual(new Uint8Array(numarr));
-    });
+        expect(nToU8a(BigInt(strval), { bitLength, isLe, isNegative })).toEqual(
+          new Uint8Array(numarr),
+        );
+      },
+    );
   });
 
   it('converts null values to 0x00', (): void => {
-    expect(
-      nToU8a(null)
-    ).toEqual(new Uint8Array(1));
+    expect(nToU8a(null)).toEqual(new Uint8Array(1));
   });
 
   it('converts null values to 0x00000000 (bitLength)', (): void => {
-    expect(
-      nToU8a(null, { bitLength: 32 })
-    ).toEqual(new Uint8Array([0, 0, 0, 0]));
+    expect(nToU8a(null, { bitLength: 32 })).toEqual(
+      new Uint8Array([0, 0, 0, 0]),
+    );
   });
 
   it('converts values to a prefixed hex representation', (): void => {
-    expect(
-      nToU8a(0x123456n, { isLe: false })
-    ).toEqual(new Uint8Array([0x12, 0x34, 0x56]));
+    expect(nToU8a(0x123456n, { isLe: false })).toEqual(
+      new Uint8Array([0x12, 0x34, 0x56]),
+    );
   });
 
   it('converts values to a prefixed hex representation (bitLength)', (): void => {
-    expect(
-      nToU8a(0x123456n, { bitLength: 32, isLe: false })
-    ).toEqual(new Uint8Array([0x00, 0x12, 0x34, 0x56]));
+    expect(nToU8a(0x123456n, { bitLength: 32, isLe: false })).toEqual(
+      new Uint8Array([0x00, 0x12, 0x34, 0x56]),
+    );
   });
 
   it('converts using little endian (as set)', (): void => {
-    expect(
-      nToU8a(0x123456n, { bitLength: 32, isLe: true })
-    ).toEqual(new Uint8Array([0x56, 0x34, 0x12, 0x00]));
+    expect(nToU8a(0x123456n, { bitLength: 32, isLe: true })).toEqual(
+      new Uint8Array([0x56, 0x34, 0x12, 0x00]),
+    );
   });
 
   it('should handle faker generated positive numbers', () => {
     const num = faker.number.int({ min: 0, max: Number.MAX_SAFE_INTEGER });
     const u8a = nToU8a(num);
+
     expect(u8a).toBeInstanceOf(Uint8Array);
     expect(u8a.length).toBeGreaterThan(0);
   });
@@ -95,6 +116,7 @@ describe('nToU8a', (): void => {
   it('should handle faker generated negative numbers', () => {
     const num = faker.number.int({ min: Number.MIN_SAFE_INTEGER, max: -1 });
     const u8a = nToU8a(num, { isNegative: true });
+
     expect(u8a).toBeInstanceOf(Uint8Array);
     expect(u8a.length).toBeGreaterThan(0);
   });
@@ -103,6 +125,7 @@ describe('nToU8a', (): void => {
     const num = faker.number.int({ min: 0, max: 100000 });
     const bitLength = faker.number.int({ min: 8, max: 64, multipleOf: 8 });
     const u8a = nToU8a(num, { bitLength });
+
     expect(u8a).toBeInstanceOf(Uint8Array);
     expect(u8a.length).toBe(Math.ceil(bitLength / 8));
   });

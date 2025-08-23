@@ -20,7 +20,6 @@ export interface ToBn {
   toBn: () => BN;
 }
 
-
 export interface ToBnOptions {
   /** Convert in LE format */
   isLe?: boolean;
@@ -41,6 +40,5 @@ export interface ToNumberOptions extends ToBnOptions {
 }
 
 export type U8aLike = number[] | Uint8Array | string;
-
 
 export type BoolLike = boolean | number | string;

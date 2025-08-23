@@ -1,7 +1,8 @@
-import { describe, expect, it } from 'vitest';
 import { faker } from '@faker-js/faker';
-import { bnToBn } from './toBn.js';
+import { describe, expect, it } from 'vitest';
+
 import { BN } from './bn.js';
+import { bnToBn } from './toBn.js';
 
 describe('bnToBn', (): void => {
   it('converts null values to 0x00', (): void => {
@@ -29,24 +30,29 @@ describe('bnToBn', (): void => {
   });
 
   it('converts Compact to BN', (): void => {
-    expect(bnToBn({
-      something: 'test',
-      toBn: (): BN => new BN(1234)
-    }).toNumber()).toEqual(1234);
+    expect(
+      bnToBn({
+        something: 'test',
+        toBn: (): BN => new BN(1234),
+      }).toNumber(),
+    ).toEqual(1234);
   });
 
   it('should handle faker generated numbers', (): void => {
     const number = faker.number.int({ min: 1, max: 1000 });
+
     expect(bnToBn(number).toNumber()).toEqual(number);
   });
 
   it('should handle faker generated strings', (): void => {
     const numberString = faker.number.int({ min: 1, max: 1000 }).toString();
+
     expect(bnToBn(numberString).toNumber()).toEqual(parseInt(numberString));
   });
 
   it('should handle faker generated hex strings', (): void => {
     const hexString = faker.string.hexadecimal({ length: 6 });
+
     expect(bnToBn(hexString).toNumber()).toEqual(parseInt(hexString, 16));
   });
 });

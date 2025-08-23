@@ -1,5 +1,3 @@
-
-
 /**
  * @name u8aFixLength
  * @summary Shifts a Uint8Array to a specific bitLength
@@ -16,7 +14,11 @@
  * u8aFixLength('0x1234', 8) // => 0x12
  * ```
  */
-export function u8aFixLength(value: Uint8Array, bitLength = -1, atStart = false): Uint8Array {
+export function u8aFixLength(
+  value: Uint8Array,
+  bitLength = -1,
+  atStart = false,
+): Uint8Array {
   const byteLength = Math.ceil(bitLength / 8);
 
   if (bitLength === -1 || value.length === byteLength) {
@@ -27,7 +29,7 @@ export function u8aFixLength(value: Uint8Array, bitLength = -1, atStart = false)
 
   const result = new Uint8Array(byteLength);
 
-  result.set(value, atStart ? 0 : (byteLength - value.length));
+  result.set(value, atStart ? 0 : byteLength - value.length);
 
   return result;
 }

@@ -1,6 +1,4 @@
-
-
-import { isString } from "./string.js";
+import { isString } from './string.js';
 
 /**
  * @name isBoolean
@@ -26,12 +24,17 @@ export function isBoolean(value: unknown): value is boolean {
  * @description
  * Checks to see if the input value is a JavaScript boolean, number, or string.
  */
-export function isBooleanLike(value: unknown): value is boolean | number | string {
+export function isBooleanLike(
+  value: unknown,
+): value is boolean | number | string {
   if (typeof value === 'boolean') return true;
   if (typeof value === 'number') return value === 0 || value === 1;
+
   if (isString(value)) {
     const set = new Set(['true', 'false', '1', '0', 'yes', 'no', 'y', 'n']);
+
     return set.has(value.toLowerCase());
   }
+
   return false;
 }

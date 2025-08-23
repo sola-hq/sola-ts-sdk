@@ -17,15 +17,23 @@ import { hexStripPrefix } from './stripPrefix.js';
  * console.log('fixed', hexFixLength('0x0012', 8)); // => 0x12
  * ```
  */
-export function hexFixLength(value: string, bitLength = -1, withPadding = false): string {
+export function hexFixLength(
+  value: string,
+  bitLength = -1,
+  withPadding = false,
+): string {
   const strLength = Math.ceil(bitLength / 4);
   const hexLength = strLength + 2;
 
   return addHexPrefix(
-    (bitLength === -1 || value.length === hexLength || (!withPadding && value.length < hexLength))
+    bitLength === -1 ||
+      value.length === hexLength ||
+      (!withPadding && value.length < hexLength)
       ? hexStripPrefix(value)
-      : (value.length > hexLength)
+      : value.length > hexLength
         ? hexStripPrefix(value).slice(-1 * strLength)
-        : `${'0'.repeat(strLength)}${hexStripPrefix(value)}`.slice(-1 * strLength)
+        : `${'0'.repeat(strLength)}${hexStripPrefix(value)}`.slice(
+            -1 * strLength,
+          ),
   );
 }

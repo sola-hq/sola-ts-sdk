@@ -1,5 +1,3 @@
-
-
 import { u8aToU8a } from './toU8a.js';
 
 /**
@@ -23,7 +21,7 @@ export function u8aEq(a: string | Uint8Array, b: string | Uint8Array): boolean {
   if (u8aa.length === u8ab.length) {
     const dvA = new DataView(u8aa.buffer, u8aa.byteOffset);
     const dvB = new DataView(u8ab.buffer, u8ab.byteOffset);
-    const mod = (u8aa.length % 4) | 0;
+    const mod = u8aa.length % 4 | 0;
     const length = (u8aa.length - mod) | 0;
 
     for (let i = 0; i < length; i += 4) {

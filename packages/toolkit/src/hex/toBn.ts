@@ -1,5 +1,3 @@
-
-
 import type { ToBnOptions } from '../types.js';
 
 import { BN } from '../bn/bn.js';
@@ -23,7 +21,10 @@ import { hexStripPrefix } from './stripPrefix.js';
  * hexToBn('0x123480001f'); // => BN(0x123480001f)
  * ```
  */
-export function hexToBn(value?: string | null, { isLe = false, isNegative = false }: ToBnOptions = {}): BN {
+export function hexToBn(
+  value?: string | null,
+  { isLe = false, isNegative = false }: ToBnOptions = {},
+): BN {
   if (!value || value === '0x') {
     return new BN(0);
   }
@@ -33,7 +34,5 @@ export function hexToBn(value?: string | null, { isLe = false, isNegative = fals
 
   // fromTwos takes as parameter the number of bits, which is the hex length
   // multiplied by 4 (2 bytes being 8 bits)
-  return isNegative
-    ? bn.fromTwos(stripped.length * 4)
-    : bn;
+  return isNegative ? bn.fromTwos(stripped.length * 4) : bn;
 }

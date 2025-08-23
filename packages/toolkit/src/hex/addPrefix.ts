@@ -1,4 +1,3 @@
-
 import { hexHasPrefix } from './hasPrefix.js';
 
 /**
@@ -18,6 +17,8 @@ import { hexHasPrefix } from './hasPrefix.js';
 export function addHexPrefix(value?: string | null | number): string {
   if (hexHasPrefix(value)) return value as string;
   if (typeof value === 'number') return `0x${value.toString(16)}`;
-  if (typeof value === 'string') return `0x${value && value.length % 2 === 1 ? '0' : ''}${value || ''}`;
-  return "";
+  if (typeof value === 'string')
+    return `0x${value && value.length % 2 === 1 ? '0' : ''}${value || ''}`;
+
+  return '';
 }

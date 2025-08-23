@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest';
 import { faker } from '@faker-js/faker';
+import { describe, expect, it } from 'vitest';
+
 import { isArray } from './array.js';
 
 describe('isArray', (): void => {
@@ -18,11 +19,13 @@ describe('isArray', (): void => {
   it('should handle faker generated arrays', () => {
     const size = faker.number.int({ min: 0, max: 10 });
     const randomArray = Array.from({ length: size }, () => faker.lorem.word());
+
     expect(isArray(randomArray)).toBe(true);
   });
 
   it('should handle faker generated non-array values', () => {
     const randomString = faker.lorem.word();
+
     expect(isArray(randomString)).toBe(false);
   });
 });

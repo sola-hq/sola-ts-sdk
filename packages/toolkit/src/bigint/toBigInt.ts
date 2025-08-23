@@ -1,4 +1,3 @@
-
 import type { BN } from '../bn/bn.js';
 import type { ToBigInt, ToBn } from '../types.js';
 
@@ -12,7 +11,9 @@ import { isToBn } from '../is/toBn.js';
  * @name nToBigInt
  * @summary Creates a bigInt value from a BN, bigint, string (base 10 or hex) or number input.
  */
-export function nToBigInt<T extends ToBigInt | ToBn>(value?: T | BN | bigint | string | number | null): bigint {
+export function nToBigInt<T extends ToBigInt | ToBn>(
+  value?: T | BN | bigint | string | number | null,
+): bigint {
   // Early return for null/undefined/empty values
   if (!value) {
     return BigInt(0);

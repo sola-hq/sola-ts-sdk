@@ -1,12 +1,14 @@
-
-
-import type { ToNumberOptions, ToBn } from '../types.js';
+import type { ToBn, ToNumberOptions } from '../types.js';
 import type { BN } from './bn.js';
 
 import { nToU8a } from '../bigint/toU8a.js';
 import { bnToBn } from './toBn.js';
 
-const DEFAULT_OPTS: ToNumberOptions = { bitLength: -1, isLe: true, isNegative: false };
+const DEFAULT_OPTS: ToNumberOptions = {
+  bitLength: -1,
+  isLe: true,
+  isNegative: false,
+};
 
 /**
  * @name bnToU8a
@@ -22,6 +24,9 @@ const DEFAULT_OPTS: ToNumberOptions = { bitLength: -1, isLe: true, isNegative: f
  * bnToU8a(new BN(0x1234)); // => [0x12, 0x34]
  * ```
  */
-export function bnToU8a<ExtToBn extends ToBn>(value?: ExtToBn | BN | bigint | number | null, options: ToNumberOptions = DEFAULT_OPTS): Uint8Array {
+export function bnToU8a<ExtToBn extends ToBn>(
+  value?: ExtToBn | BN | bigint | number | null,
+  options: ToNumberOptions = DEFAULT_OPTS,
+): Uint8Array {
   return nToU8a(bnToBn(value), options);
 }

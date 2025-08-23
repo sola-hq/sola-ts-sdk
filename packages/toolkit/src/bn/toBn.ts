@@ -1,5 +1,3 @@
-
-
 import type { ToBigInt, ToBn } from '../types.js';
 
 import { hexToBn } from '../hex/toBn.js';
@@ -25,7 +23,9 @@ import { BN } from './bn.js';
  * bnToBn(new BN(0x1234)); // => BN(0x1234)
  * ```
  */
-export function bnToBn<T extends ToBigInt | ToBn>(value?: T | BN | bigint | string | number | null): BN {
+export function bnToBn<T extends ToBigInt | ToBn>(
+  value?: T | BN | bigint | string | number | null,
+): BN {
   return value
     ? BN.isBN(value)
       ? value

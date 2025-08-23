@@ -1,10 +1,13 @@
-import { describe, expect, it } from 'vitest';
 import { faker } from '@faker-js/faker';
+import { describe, expect, it } from 'vitest';
+
 import { range } from './range.js';
 
 describe('arrayRange', (): void => {
   it('does not allow 0 values', (): void => {
-    expect(() => range(0)).toThrow(/Expected non-zero, positive number as a range size/);
+    expect(() => range(0)).toThrow(
+      /Expected non-zero, positive number as a range size/,
+    );
   });
 
   it('creates a range of the specified length', (): void => {
@@ -18,6 +21,7 @@ describe('arrayRange', (): void => {
   it('should handle faker generated sizes', (): void => {
     const size = faker.number.int({ min: 1, max: 10 });
     const result = range(size);
+
     expect(result.length).toBe(size);
     expect(result[0]).toBe(0);
     expect(result[result.length - 1]).toBe(size - 1);
@@ -27,6 +31,7 @@ describe('arrayRange', (): void => {
     const size = faker.number.int({ min: 1, max: 5 });
     const offset = faker.number.int({ min: 1, max: 10 });
     const result = range(size, offset);
+
     expect(result.length).toBe(size);
     expect(result[0]).toBe(offset);
     expect(result[result.length - 1]).toBe(offset + size - 1);

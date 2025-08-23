@@ -3,7 +3,10 @@ interface Options {
   isLe?: boolean;
 }
 
-export function floatToU8a(value: String | string | number | Number = 0.0, { bitLength = 32, isLe = true }: Options = {}): Uint8Array {
+export function floatToU8a(
+  value: string | string | number | number = 0.0,
+  { bitLength = 32, isLe = true }: Options = {},
+): Uint8Array {
   if (bitLength !== 32 && bitLength !== 64) {
     throw new Error('Invalid bitLength provided, expected 32 or 64');
   }

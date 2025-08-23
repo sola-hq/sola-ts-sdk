@@ -1,4 +1,5 @@
-import { U8aLike } from '../types.js';
+import type { U8aLike } from '../types.js';
+
 import { u8aToU8a } from '../u8a/toU8a.js';
 import { isHex } from './hex.js';
 import { isString } from './string.js';

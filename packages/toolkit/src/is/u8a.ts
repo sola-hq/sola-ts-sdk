@@ -1,5 +1,3 @@
-
-
 /**
  * @name isU8a
  * @summary Tests for a `Uint8Array` object instance.
@@ -18,7 +16,7 @@ export function isU8a(value?: unknown): value is Uint8Array {
   // here we defer the instanceof check which is actually slightly
   // slower than just checking the constrctor (direct instances)
   return (
-    ((value && (value as Uint8Array).constructor) === Uint8Array) ||
+    (value && (value as Uint8Array).constructor) === Uint8Array ||
     value instanceof Uint8Array
   );
 }

@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest';
 import { faker } from '@faker-js/faker';
+import { describe, expect, it } from 'vitest';
+
 import { hasBuffer } from './has.js';
 
 describe('hasBuffer', (): void => {
@@ -16,6 +17,7 @@ describe('hasBuffer', (): void => {
     if (hasBuffer) {
       const testData = faker.string.alphanumeric(10);
       const buffer = Buffer.from(testData);
+
       expect(buffer).toBeInstanceOf(Buffer);
     }
   });

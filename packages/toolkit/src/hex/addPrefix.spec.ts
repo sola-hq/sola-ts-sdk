@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest';
 import { faker } from '@faker-js/faker';
+import { describe, expect, it } from 'vitest';
+
 import { addHexPrefix } from './addPrefix.js';
 
 describe('addHexPrefix', (): void => {
@@ -21,11 +22,13 @@ describe('addHexPrefix', (): void => {
 
   it('should handle faker generated hex strings', (): void => {
     const hexString = faker.string.hexadecimal({ length: 8 });
+
     expect(addHexPrefix(hexString)).toEqual(hexString);
   });
 
   it('should handle odd length hex strings', (): void => {
     const oddHexString = faker.string.hexadecimal({ length: 7 }).slice(2); // Remove 0x prefix
+
     expect(addHexPrefix(oddHexString)).toEqual(`0x0${oddHexString}`);
   });
 });

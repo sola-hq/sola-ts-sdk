@@ -1,5 +1,3 @@
-
-
 import type { ToBigInt } from '../types.js';
 
 /**
@@ -8,5 +6,5 @@ import type { ToBigInt } from '../types.js';
  * @returns True if the value is an object with a toBigInt method, false otherwise
  */
 export const isToBigInt = (value: unknown): value is ToBigInt => {
-	return typeof value === 'object' && value !== null && 'toBigInt' in value;
+  return typeof value === 'object' && value !== null && 'toBigInt' in value;
 };

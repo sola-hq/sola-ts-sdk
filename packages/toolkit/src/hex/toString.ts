@@ -1,5 +1,3 @@
-
-
 import { u8aToString } from '../u8a/toString.js';
 import { hexToU8a } from './toU8a.js';
 
@@ -18,7 +16,5 @@ import { hexToU8a } from './toU8a.js';
  * ```
  */
 export function hexToString(_value?: string | null): string {
-  return u8aToString(
-    hexToU8a(_value)
-  );
+  return u8aToString(hexToU8a(_value));
 }

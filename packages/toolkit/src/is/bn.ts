@@ -1,5 +1,3 @@
-
-
 import { BN } from '../bn/bn.js';
 
 /**

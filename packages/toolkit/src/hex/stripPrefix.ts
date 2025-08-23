@@ -1,6 +1,4 @@
-
-
-import { REGEX_HEX_WITHOUT_PREFIX, REGEX_HEX_WITH_PREFIX } from '../is/hex.js';
+import { REGEX_HEX_WITH_PREFIX, REGEX_HEX_WITHOUT_PREFIX } from '../is/hex.js';
 
 /**
  * @name hexStripPrefix

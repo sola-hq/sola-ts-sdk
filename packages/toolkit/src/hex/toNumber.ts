@@ -1,7 +1,5 @@
-
-
-import { hexToBn } from './toBn.js';
 import { hexStripPrefix } from './stripPrefix.js';
+import { hexToBn } from './toBn.js';
 
 /**
  * @name hexToNumber

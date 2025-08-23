@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest';
 import { faker } from '@faker-js/faker';
+import { describe, expect, it } from 'vitest';
+
 import { stringToU8a } from '../string/toU8a.js';
 import { isAscii } from './ascii.js';
 
@@ -43,21 +44,30 @@ describe('isAscii', (): void => {
 
   it('should handle faker generated ASCII strings', () => {
     const asciiString = faker.lorem.word();
+
     expect(isAscii(asciiString)).toBe(true);
   });
 
   it('should handle faker generated non-ASCII strings', () => {
     const nonAsciiString = '你好世界';
+
     expect(isAscii(nonAsciiString)).toBe(false);
   });
 
   it('should handle faker generated ASCII Uint8Array', () => {
-    const asciiBytes = new Uint8Array(faker.lorem.word().split('').map(char => char.charCodeAt(0)));
+    const asciiBytes = new Uint8Array(
+      faker.lorem
+        .word()
+        .split('')
+        .map((char) => char.charCodeAt(0)),
+    );
+
     expect(isAscii(asciiBytes)).toBe(true);
   });
 
   it('should handle faker generated non-ASCII Uint8Array', () => {
     const nonAsciiBytes = new Uint8Array([200, 201, 202, 203, 204]);
+
     expect(isAscii(nonAsciiBytes)).toBe(false);
   });
 });

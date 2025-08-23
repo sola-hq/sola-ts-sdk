@@ -1,5 +1,3 @@
-
-
 /**
  * @description
  * Encoding and decoding of parity-codec compact numbers. The codec is created

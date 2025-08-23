@@ -1,5 +1,3 @@
-
-
 import type { U8aLike } from '../types.js';
 
 import { u8aToU8a } from './toU8a.js';
@@ -38,7 +36,10 @@ export function u8aConcat(...list: readonly U8aLike[]): Uint8Array {
  * @name u8aConcatStrict
  * @description A strict version of [[u8aConcat]], accepting only Uint8Array inputs
  */
-export function u8aConcatStrict(u8as: readonly Uint8Array[], length = 0): Uint8Array {
+export function u8aConcatStrict(
+  u8as: readonly Uint8Array[],
+  length = 0,
+): Uint8Array {
   const count = u8as.length;
   let offset = 0;
 

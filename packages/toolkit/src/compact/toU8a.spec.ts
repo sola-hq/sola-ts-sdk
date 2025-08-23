@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
 import { faker } from '@faker-js/faker';
+import { describe, expect, it } from 'vitest';
 
 import { BN } from '../bn/index.js';
 import { compactToU8a } from './index.js';
@@ -29,8 +29,14 @@ const TESTS: [output: string | Uint8Array, input: BN | number][] = [
   [new Uint8Array([253, 127]), 0x1fff],
   [new Uint8Array([254, 255, 3, 0]), 0xffff],
   [new Uint8Array([3 + ((4 - 4) << 2), 249, 255, 255, 255]), 0xfffffff9],
-  [new Uint8Array([3 + ((6 - 4) << 2), 0x00, 0x40, 0x7a, 0x10, 0xf3, 0x5a]), new BN('00005af3107a4000', 16)],
-  [new Uint8Array([23, 52, 0x40, 0x7a, 0x10, 0xf3, 0x5a, 0, 0, 18]), new BN('1200005af3107a4034', 16)]
+  [
+    new Uint8Array([3 + ((6 - 4) << 2), 0x00, 0x40, 0x7a, 0x10, 0xf3, 0x5a]),
+    new BN('00005af3107a4000', 16),
+  ],
+  [
+    new Uint8Array([23, 52, 0x40, 0x7a, 0x10, 0xf3, 0x5a, 0, 0, 18]),
+    new BN('1200005af3107a4034', 16),
+  ],
 ];
 
 describe('encode', (): void => {
@@ -44,12 +50,10 @@ describe('encode', (): void => {
   describe('conversion tests', (): void => {
     TESTS.forEach(([output, input], i): void => {
       it(`#${i}: encodes ${input.toString()}`, (): void => {
-        expect(
-          compactToU8a(input)
-        ).toEqual(
+        expect(compactToU8a(input)).toEqual(
           output instanceof Uint8Array
             ? output
-            : Uint8Array.from(output.split(' ').map((s) => parseInt(s, 16)))
+            : Uint8Array.from(output.split(' ').map((s) => parseInt(s, 16))),
         );
       });
     });
@@ -58,6 +62,7 @@ describe('encode', (): void => {
   it('should handle faker generated numbers (small)', () => {
     const num = faker.number.int({ min: 0, max: 63 });
     const encoded = compactToU8a(new BN(num));
+
     expect(encoded.length).toBe(1);
     expect(encoded[0] >> 2).toBe(num);
   });
@@ -65,18 +70,24 @@ describe('encode', (): void => {
   it('should handle faker generated numbers (medium)', () => {
     const num = faker.number.int({ min: 64, max: 16383 });
     const encoded = compactToU8a(new BN(num));
+
     expect(encoded.length).toBe(2);
   });
 
   it('should handle faker generated numbers (large)', () => {
     const num = faker.number.int({ min: 16384, max: 1073741823 });
     const encoded = compactToU8a(new BN(num));
+
     expect(encoded.length).toBe(4);
   });
 
   it('should handle faker generated numbers (very large)', () => {
-    const num = faker.number.bigInt({ min: 1073741824n, max: BigInt('100000000000000000000000000000000000000') });
+    const num = faker.number.bigInt({
+      min: 1073741824n,
+      max: BigInt('100000000000000000000000000000000000000'),
+    });
     const encoded = compactToU8a(new BN(num.toString()));
+
     expect(encoded.length).toBeGreaterThanOrEqual(5);
   });
 });

@@ -17,11 +17,14 @@
   },
   "scripts": {
     "build": "tsup",
-    "test": "vitest"
+    "format": "prettier --write .",
+    "test": "vitest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix && prettier --write ."
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@scure/base": "^1.2.6",
     "bn.js": "^5.2.2"
@@ -29,6 +32,8 @@
   "devDependencies": {
     "@faker-js/faker": "^9.9.0",
     "@types/bn.js": "^5.2.0",
+    "eslint": "^9.34.0",
+    "prettier": "^3.6.2",
     "tsup": "^8.5.0"
   }
 }

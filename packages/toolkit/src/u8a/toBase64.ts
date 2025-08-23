@@ -1,7 +1,7 @@
 import type { U8aLike } from '../types.js';
 
-import { u8aToU8a } from '../u8a/toU8a.js';
 import { toBase64 } from '../base64/index.js';
+import { u8aToU8a } from '../u8a/toU8a.js';
 
 /**
  * @name u8aToBn

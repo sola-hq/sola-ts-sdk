@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest';
 import { faker } from '@faker-js/faker';
+import { describe, expect, it } from 'vitest';
+
 import { BN, bnToHex } from './index.js';
 
 describe('bnToHex', (): void => {
@@ -28,18 +29,22 @@ describe('bnToHex', (): void => {
   });
 
   it('handles negative numbers (with bitLength)', (): void => {
-    expect(bnToHex(new BN(-1234), { bitLength: 32, isNegative: true })).toBe('0xfffffb2e');
+    expect(bnToHex(new BN(-1234), { bitLength: 32, isNegative: true })).toBe(
+      '0xfffffb2e',
+    );
   });
 
   it('should handle faker generated positive numbers', (): void => {
     const positiveNumber = faker.number.int({ min: 1, max: 1000 });
     const hexResult = bnToHex(new BN(positiveNumber));
+
     expect(hexResult.startsWith('0x')).toBe(true);
   });
 
   it('should handle faker generated negative numbers', (): void => {
     const negativeNumber = faker.number.int({ min: -1000, max: -1 });
     const hexResult = bnToHex(new BN(negativeNumber), { isNegative: true });
+
     expect(hexResult.startsWith('0x')).toBe(true);
   });
 });

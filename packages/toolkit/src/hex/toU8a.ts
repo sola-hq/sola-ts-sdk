@@ -1,5 +1,3 @@
-
-
 import { hexStripPrefix } from './stripPrefix.js';
 
 const CHR = '0123456789abcdef';
@@ -45,15 +43,9 @@ export function hexToU8a(value?: string | null, bitLength = -1): Uint8Array {
   const stripped = hexStripPrefix(value);
 
   const decLength = Math.ceil(stripped.length / 2);
-  const endLength = Math.ceil(
-    bitLength === -1
-      ? decLength
-      : bitLength / 8
-  );
+  const endLength = Math.ceil(bitLength === -1 ? decLength : bitLength / 8);
   const result = new Uint8Array(endLength);
-  const offset = endLength > decLength
-    ? endLength - decLength
-    : 0;
+  const offset = endLength > decLength ? endLength - decLength : 0;
 
   for (let i = offset, s = 0; i < endLength; i++, s += 2) {
     // The big factor here is actually the string lookups. If we do

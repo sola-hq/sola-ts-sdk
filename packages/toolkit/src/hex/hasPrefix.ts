@@ -1,5 +1,4 @@
-
-import { HEX_PREFIX, isHex } from '../is/hex.js';
+import { HEX_PREFIX } from '../is/hex.js';
 
 /**
  * @name hexHasPrefix
@@ -16,6 +15,9 @@ import { HEX_PREFIX, isHex } from '../is/hex.js';
  * ```
  */
 export function hexHasPrefix(value?: string | null | number): boolean {
-  if (typeof value !== 'string') return false;
+  if (typeof value !== 'string') {
+    return false;
+  }
+
   return value.startsWith(HEX_PREFIX);
 }

@@ -1,5 +1,3 @@
-
-
 /**
  * @name isNull
  * @summary Tests for a `null` values.

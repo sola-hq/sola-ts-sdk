@@ -1,5 +1,3 @@
-
-
 import { BN, BN_ONE, BN_TWO, bnToBn, bnToU8a } from '../bn/index.js';
 import { u8aConcatStrict } from '../u8a/concat.js';
 
@@ -41,12 +39,14 @@ export function compactToU8a(value: BN | bigint | number): Uint8Array {
   }
 
   if (length < 4) {
-    throw new Error('Invalid length, previous checks match anything less than 2^30');
+    throw new Error(
+      'Invalid length, previous checks match anything less than 2^30',
+    );
   }
 
   return u8aConcatStrict([
     // subtract 4 as minimum (also catered for in decoding)
     new Uint8Array([((length - 4) << 2) + 0b11]),
-    u8a.subarray(0, length)
+    u8a.subarray(0, length),
   ]);
 }

@@ -1,5 +1,3 @@
-
-
 import { compactFromU8a } from './fromU8a.js';
 
 /**
@@ -18,8 +16,5 @@ export function compactStripLength(input: Uint8Array): [number, Uint8Array] {
   const [offset, length] = compactFromU8a(input);
   const total = offset + length.toNumber();
 
-  return [
-    total,
-    input.subarray(offset, total)
-  ];
+  return [total, input.subarray(offset, total)];
 }

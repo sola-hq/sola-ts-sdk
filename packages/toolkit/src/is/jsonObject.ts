@@ -1,5 +1,3 @@
-
-
 import { stringify } from '../stringify.js';
 
 /**
@@ -27,9 +25,7 @@ import { stringify } from '../stringify.js';
  * ```
  */
 export function isJsonObject(value: unknown): value is Record<string, unknown> {
-  const str = typeof value !== 'string'
-    ? stringify(value)
-    : value;
+  const str = typeof value !== 'string' ? stringify(value) : value;
 
   try {
     const obj = JSON.parse(str) as unknown;

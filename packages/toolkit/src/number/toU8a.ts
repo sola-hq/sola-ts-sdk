@@ -1,5 +1,3 @@
-
-
 import { hexToU8a } from '../hex/toU8a.js';
 import { numberToHex } from './toHex.js';
 
@@ -18,7 +16,5 @@ import { numberToHex } from './toHex.js';
  * ```
  */
 export function numberToU8a(value?: number | null, bitLength = -1): Uint8Array {
-  return hexToU8a(
-    numberToHex(value, bitLength), bitLength
-  );
+  return hexToU8a(numberToHex(value, bitLength), bitLength);
 }

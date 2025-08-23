@@ -6,13 +6,13 @@ export * from './bn/index.js';
 export * from './buffer/index.js';
 export * from './compact/index.js';
 export * from './float/index.js';
+export * from './has.js';
 export * from './hex/index.js';
 export * from './is/index.js';
 export * from './number/index.js';
 export * from './string/index.js';
+export type * from './types.js';
 export * from './u8a/index.js';
-export * from './has.js';
-export * from './types.js';
 
-//re-export
+// re-export
 export * from '@scure/base';

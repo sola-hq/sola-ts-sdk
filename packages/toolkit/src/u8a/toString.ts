@@ -1,5 +1,3 @@
-
-
 const decoder = new TextDecoder();
 
 /**
@@ -17,7 +15,5 @@ const decoder = new TextDecoder();
  * ```
  */
 export function u8aToString(value?: Uint8Array | null): string {
-  return value
-    ? decoder.decode(value)
-    : '';
+  return value ? decoder.decode(value) : '';
 }

@@ -1,5 +1,5 @@
 import { u8aToHex } from '../u8a/toHex.js';
-import { stringToU8a } from './toU8a.js'
+import { stringToU8a } from './toU8a.js';
 
 /**
  * @name stringToHex
@@ -16,7 +16,5 @@ import { stringToU8a } from './toU8a.js'
  * ```
  */
 export function stringToHex(value?: string): string {
-  return u8aToHex(
-    stringToU8a(value)
-  );
+  return u8aToHex(stringToU8a(value));
 }

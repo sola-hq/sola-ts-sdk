@@ -21,10 +21,15 @@ export function numberToHex(value?: number | null, bitLength = -1): string {
   }
 
   let hex: string;
+
   if (value < 0) {
     // Convert to two's complement for negative numbers
-    const effectiveBitLength = bitLength === -1 ? Math.ceil(Math.log2(Math.abs(value) + 1) / 8) * 8 : bitLength;
+    const effectiveBitLength =
+      bitLength === -1
+        ? Math.ceil(Math.log2(Math.abs(value) + 1) / 8) * 8
+        : bitLength;
     const twoPowN = 1 << effectiveBitLength;
+
     hex = (twoPowN + value).toString(16);
   } else {
     hex = value.toString(16);

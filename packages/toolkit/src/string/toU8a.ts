@@ -15,7 +15,5 @@ const encoder = new TextEncoder();
  * ```
  */
 export function stringToU8a(value?: string | null): Uint8Array {
-  return value
-    ? encoder.encode(value.toString())
-    : new Uint8Array();
+  return value ? encoder.encode(value.toString()) : new Uint8Array();
 }

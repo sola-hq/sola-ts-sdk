@@ -1,5 +1,3 @@
-
-
 /**
  * @summary Utility methods to convert to and from `number` values
  */
