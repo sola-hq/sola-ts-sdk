@@ -34,7 +34,8 @@ jobs:
         with:
           commit: 'chore: update versions'
           title: 'chore: update versions'
-          publish: pnpm ci:publish --no-git-checks --access public
+          publish: pnpm changeset:publish --no-git-checks --access public
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          TURBO_CONCURRENCY: 1

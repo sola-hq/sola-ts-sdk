@@ -1,8 +1,7 @@
 {
   "name": "@sola-hq/toolkit",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Sola SDK toolkit package",
-  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -24,7 +23,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@noble/hashes": "^1.8.0",
     "@scure/base": "^1.2.6",
     "bn.js": "^5.2.2"
   },

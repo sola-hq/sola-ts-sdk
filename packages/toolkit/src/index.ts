@@ -13,3 +13,6 @@ export * from './string/index.js';
 export * from './u8a/index.js';
 export * from './has.js';
 export * from './types.js';
+
+//re-export
+export * from '@scure/base';

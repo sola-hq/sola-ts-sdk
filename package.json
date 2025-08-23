@@ -14,7 +14,7 @@
   "scripts": {
     "build": "turbo run build",
     "test": "turbo run test",
-    "ci:publish": "pnpm publish -r --access public",
+    "changeset:publish": "pnpm publish -r --access public",
     "release-sdk:version": "pnpm changeset version",
     "release-sdk:publish": "pnpm build && pnpm changeset publish"
   },
@@ -27,6 +27,7 @@
     "tsup": "^8.5.0",
     "turbo": "^2.5.5",
     "typescript": "^5.8.2",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.4"
   }
 }

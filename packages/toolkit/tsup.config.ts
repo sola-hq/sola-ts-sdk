@@ -16,5 +16,5 @@ export default defineConfig({
 		js: format === 'esm' ? '.mjs' : '.js',
 	}),
 	tsconfig: './tsconfig.json',
-	external: ['bn.js', '@noble/hashes', '@scure/base'],
+	external: ['bn.js', '@scure/base'],
 });
