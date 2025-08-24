@@ -19,8 +19,8 @@
     "format": "turbo run format",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "changeset publish",
-    "release:dry-run": "changeset version && changeset publish --dry-run"
+    "release": "changeset publish -r --access public",
+    "release:dry-run": "changeset version && changeset publish --dry-run --access public"
   },
   "keywords": [
     "sola",
