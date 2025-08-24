@@ -1,6 +1,6 @@
 {
   "name": "@sola-hq/toolkit",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Sola SDK toolkit package",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

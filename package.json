@@ -17,11 +17,15 @@
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "format": "turbo run format",
-    "changeset:publish": "pnpm publish -r --access public",
-    "release-sdk:version": "pnpm changeset version",
-    "release-sdk:publish": "pnpm build && pnpm changeset publish"
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish",
+    "release:dry-run": "changeset version && changeset publish --dry-run"
   },
-  "keywords": [],
+  "keywords": [
+    "sola",
+    "ts-sdk"
+  ],
   "author": "Sola HQ",
   "license": "MIT",
   "packageManager": "pnpm@10.10.0",
