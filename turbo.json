@@ -9,6 +9,18 @@
       "dependsOn": ["^build"],
       "inputs": ["src/**/*.ts", "test/**/*.ts"]
     },
+    "lint": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts", "test/**/*.ts"]
+    },
+    "lint:fix": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts", "test/**/*.ts"]
+    },
+    "format": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts", "test/**/*.ts"]
+    },
     "dev": {
       "cache": false
     }

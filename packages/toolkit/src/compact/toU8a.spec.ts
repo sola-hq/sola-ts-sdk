@@ -53,7 +53,7 @@ describe('encode', (): void => {
         expect(compactToU8a(input)).toEqual(
           output instanceof Uint8Array
             ? output
-            : Uint8Array.from(output.split(' ').map((s) => parseInt(s, 16))),
+            : Uint8Array.from(output.split(' ').map(s => parseInt(s, 16))),
         );
       });
     });

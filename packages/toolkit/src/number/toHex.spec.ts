@@ -29,7 +29,7 @@ describe('numberToHex', (): void => {
   });
 
   it('should handle faker generated positive numbers', () => {
-    const num = faker.number.int({ min: 0, max: 1000000 });
+    const num = faker.number.int({ max: 1000000, min: 0 });
     const hex = numberToHex(num);
 
     expect(hex.startsWith('0x')).toBe(true);
@@ -37,7 +37,7 @@ describe('numberToHex', (): void => {
   });
 
   it('should handle faker generated negative numbers', () => {
-    const num = faker.number.int({ min: -1000000, max: -1 });
+    const num = faker.number.int({ max: -1, min: -1000000 });
     const hex = numberToHex(num);
 
     expect(hex.startsWith('0x')).toBe(true);
@@ -48,8 +48,8 @@ describe('numberToHex', (): void => {
   });
 
   it('should handle faker generated numbers with specific bitLength', () => {
-    const num = faker.number.int({ min: 0, max: 100000 });
-    const bitLength = faker.number.int({ min: 8, max: 64, multipleOf: 8 });
+    const num = faker.number.int({ max: 100000, min: 0 });
+    const bitLength = faker.number.int({ max: 64, min: 8, multipleOf: 8 });
     const hex = numberToHex(num, bitLength);
 
     expect(hex.startsWith('0x')).toBe(true);

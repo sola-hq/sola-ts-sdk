@@ -27,10 +27,10 @@ describe('u8aToU8a', (): void => {
   });
 
   it('should handle faker generated Uint8Array', () => {
-    const size = faker.number.int({ min: 0, max: 100 });
+    const size = faker.number.int({ max: 100, min: 0 });
     const randomBytes = new Uint8Array(
       Array.from({ length: size }, () =>
-        faker.number.int({ min: 0, max: 255 }),
+        faker.number.int({ max: 255, min: 0 }),
       ),
     );
 
@@ -49,7 +49,7 @@ describe('u8aToU8a', (): void => {
     }
 
     const expectedU8a = new Uint8Array(
-      bytePairs.map((byte) => parseInt(byte, 16)),
+      bytePairs.map(byte => parseInt(byte, 16)),
     );
 
     expect(u8aToU8a(hexString)).toEqual(expectedU8a);
@@ -63,19 +63,19 @@ describe('u8aToU8a', (): void => {
   });
 
   it('should handle faker generated number arrays', () => {
-    const size = faker.number.int({ min: 0, max: 100 });
+    const size = faker.number.int({ max: 100, min: 0 });
     const numberArray = Array.from({ length: size }, () =>
-      faker.number.int({ min: 0, max: 255 }),
+      faker.number.int({ max: 255, min: 0 }),
     );
 
     expect(u8aToU8a(numberArray)).toEqual(new Uint8Array(numberArray));
   });
 
   it('should handle faker generated Buffer', () => {
-    const size = faker.number.int({ min: 0, max: 100 });
+    const size = faker.number.int({ max: 100, min: 0 });
     const randomBytes = new Uint8Array(
       Array.from({ length: size }, () =>
-        faker.number.int({ min: 0, max: 255 }),
+        faker.number.int({ max: 255, min: 0 }),
       ),
     );
     const buffer = Buffer.from(randomBytes);

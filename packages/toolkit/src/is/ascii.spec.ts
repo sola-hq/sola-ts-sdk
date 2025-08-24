@@ -59,7 +59,7 @@ describe('isAscii', (): void => {
       faker.lorem
         .word()
         .split('')
-        .map((char) => char.charCodeAt(0)),
+        .map(char => char.charCodeAt(0)),
     );
 
     expect(isAscii(asciiBytes)).toBe(true);

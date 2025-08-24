@@ -60,8 +60,8 @@ describe('hexToBigInt', (): void => {
 
   it('should handle faker generated positive hex strings', () => {
     const num = faker.number.bigInt({
-      min: 0n,
       max: BigInt('0xffffffffffffffff'),
+      min: 0n,
     });
     const hex = addHexPrefix(num.toString(16));
 
@@ -70,8 +70,8 @@ describe('hexToBigInt', (): void => {
 
   it('should handle faker generated negative hex strings', () => {
     const num = faker.number.bigInt({
-      min: -BigInt('0x7fffffffffffffff'),
       max: -1n,
+      min: -BigInt('0x7fffffffffffffff'),
     }); // Generate a negative BigInt
     const bitLength = 64; // Assume 64-bit representation for two's complement
     const twoCompNum = (1n << BigInt(bitLength)) + num; // Calculate two's complement
@@ -82,8 +82,8 @@ describe('hexToBigInt', (): void => {
 
   it('should handle faker generated hex strings with random endianness', () => {
     const num = faker.number.bigInt({
-      min: 0n,
       max: BigInt('0xffffffffffffffff'),
+      min: 0n,
     });
     const isLe = faker.datatype.boolean();
     const hex = addHexPrefix(num.toString(16));

@@ -49,14 +49,14 @@ describe('u8aToBigInt', (): void => {
   });
 
   describe('length tests', (): void => {
-    [true, false].forEach((isLe) => {
+    [true, false].forEach(isLe => {
       for (let i = 1; i < 32; i++) {
         const tu8a = [
           0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56,
           0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34,
           0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78,
         ];
-        const tstr = tu8a.map((n) => n.toString(16));
+        const tstr = tu8a.map(n => n.toString(16));
 
         it(`converts values with bitLength=${i * 8}, isLe=${isLe}`, (): void => {
           expect(
@@ -84,10 +84,10 @@ describe('u8aToBigInt', (): void => {
   });
 
   it('should handle faker generated positive Uint8Array', () => {
-    const size = faker.number.int({ min: 1, max: 8 });
+    const size = faker.number.int({ max: 8, min: 1 });
     const randomBytes = new Uint8Array(
       Array.from({ length: size }, () =>
-        faker.number.int({ min: 0, max: 255 }),
+        faker.number.int({ max: 255, min: 0 }),
       ),
     );
     const expectedBigInt = randomBytes.reduce(
@@ -99,10 +99,10 @@ describe('u8aToBigInt', (): void => {
   });
 
   it('should handle faker generated negative Uint8Array', () => {
-    const size = faker.number.int({ min: 1, max: 8 });
+    const size = faker.number.int({ max: 8, min: 1 });
     const randomBytes = new Uint8Array(
       Array.from({ length: size }, () =>
-        faker.number.int({ min: 0, max: 255 }),
+        faker.number.int({ max: 255, min: 0 }),
       ),
     );
 
@@ -119,10 +119,10 @@ describe('u8aToBigInt', (): void => {
   });
 
   it('should handle faker generated Uint8Array with random endianness', () => {
-    const size = faker.number.int({ min: 1, max: 8 });
+    const size = faker.number.int({ max: 8, min: 1 });
     const randomBytes = new Uint8Array(
       Array.from({ length: size }, () =>
-        faker.number.int({ min: 0, max: 255 }),
+        faker.number.int({ max: 255, min: 0 }),
       ),
     );
     const isLe = faker.datatype.boolean();

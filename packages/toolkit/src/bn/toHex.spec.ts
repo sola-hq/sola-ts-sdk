@@ -8,7 +8,7 @@ describe('bnToHex', (): void => {
     expect(bnToHex(null)).toBe('0x00');
   });
 
-  it('converts null values to 0x00000000 (with bitLength)', (): void => {
+  it('convertss null values to 0x00000000 (with bitLength)', (): void => {
     expect(bnToHex(null, { bitLength: 32 })).toBe('0x00000000');
   });
 

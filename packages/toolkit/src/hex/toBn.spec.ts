@@ -60,21 +60,21 @@ describe('hexToBn', (): void => {
   });
 
   it('should handle faker generated positive hex strings', () => {
-    const num = faker.number.int({ min: 0, max: Number.MAX_SAFE_INTEGER });
+    const num = faker.number.int({ max: Number.MAX_SAFE_INTEGER, min: 0 });
     const hex = addHexPrefix(num.toString(16));
 
     expect(hexToBn(hex).toNumber()).toEqual(num);
   });
 
   it('should handle faker generated negative hex strings', () => {
-    const num = faker.number.int({ min: Number.MIN_SAFE_INTEGER, max: -1 });
+    const num = faker.number.int({ max: -1, min: Number.MIN_SAFE_INTEGER });
     const hex = addHexPrefix(new BN(num).toTwos(64).toString(16)); // Convert to two's complement hex
 
     expect(hexToBn(hex, { isNegative: true }).toNumber()).toEqual(num);
   });
 
   it('should handle faker generated hex strings with random endianness', () => {
-    const num = faker.number.int({ min: 0, max: Number.MAX_SAFE_INTEGER });
+    const num = faker.number.int({ max: Number.MAX_SAFE_INTEGER, min: 0 });
     const isLe = faker.datatype.boolean();
     const hex = addHexPrefix(num.toString(16));
     const converted = hexToBn(hex, { isLe });

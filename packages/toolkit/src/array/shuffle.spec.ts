@@ -16,17 +16,17 @@ describe('arrayShuffle', (): void => {
   });
 
   it('shuffles an array', (): void => {
-    const size = faker.number.int({ min: 2, max: 100 });
+    const size = faker.number.int({ max: 100, min: 2 });
     const inp = Array.from({ length: size }, (_, i) => i);
     const out = shuffle(inp.slice());
 
     expect(inp).toHaveLength(out.length);
-    expect(inp.filter((v) => !out.includes(v))).toEqual([]);
+    expect(inp.filter(v => !out.includes(v))).toEqual([]);
     expect(stringify(inp)).not.toEqual(stringify(out));
   });
 
   it('should return a shuffled array of faker generated numbers', () => {
-    const size = faker.number.int({ min: 2, max: 100 });
+    const size = faker.number.int({ max: 100, min: 2 });
     const originalArray = Array.from({ length: size }, () =>
       faker.string.uuid(),
     );

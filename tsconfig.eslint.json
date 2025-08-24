@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "packages/**/src/**/*",
+    "packages/**/vitest.config.mts",
+    "packages/**/tsup.config.ts",
+    "packages/**/.prettierrc.mjs",
+    ".prettierrc.mjs",
+    "eslint.config.mjs"
+  ]
+}

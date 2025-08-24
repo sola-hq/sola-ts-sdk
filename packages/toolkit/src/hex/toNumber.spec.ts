@@ -14,7 +14,7 @@ describe('hexToNumber', (): void => {
   });
 
   it('should handle faker generated positive hex strings', () => {
-    const num = faker.number.int({ min: 0, max: Number.MAX_SAFE_INTEGER });
+    const num = faker.number.int({ max: Number.MAX_SAFE_INTEGER, min: 0 });
     const hex = addHexPrefix(num.toString(16));
 
     expect(hexToNumber(hex)).toEqual(num);

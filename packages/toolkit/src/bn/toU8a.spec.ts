@@ -47,7 +47,7 @@ describe('bnToU8a', (): void => {
   });
 
   it('should handle faker generated positive numbers', () => {
-    const num = faker.number.int({ min: 0, max: Number.MAX_SAFE_INTEGER });
+    const num = faker.number.int({ max: Number.MAX_SAFE_INTEGER, min: 0 });
     const u8a = bnToU8a(new BN(num));
 
     expect(u8a).toBeInstanceOf(Uint8Array);
@@ -55,7 +55,7 @@ describe('bnToU8a', (): void => {
   });
 
   it('should handle faker generated negative numbers', () => {
-    const num = faker.number.int({ min: Number.MIN_SAFE_INTEGER, max: -1 });
+    const num = faker.number.int({ max: -1, min: Number.MIN_SAFE_INTEGER });
     const u8a = bnToU8a(new BN(num), { isNegative: true });
 
     expect(u8a).toBeInstanceOf(Uint8Array);
@@ -63,8 +63,8 @@ describe('bnToU8a', (): void => {
   });
 
   it('should handle faker generated numbers with specific bitLength', () => {
-    const num = faker.number.int({ min: 0, max: 100000 });
-    const bitLength = faker.number.int({ min: 8, max: 64, multipleOf: 8 });
+    const num = faker.number.int({ max: 100000, min: 0 });
+    const bitLength = faker.number.int({ max: 64, min: 8, multipleOf: 8 });
     const u8a = bnToU8a(new BN(num), { bitLength });
 
     expect(u8a).toBeInstanceOf(Uint8Array);

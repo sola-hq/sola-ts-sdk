@@ -17,7 +17,7 @@ describe('isArray', (): void => {
   });
 
   it('should handle faker generated arrays', () => {
-    const size = faker.number.int({ min: 0, max: 10 });
+    const size = faker.number.int({ max: 10, min: 0 });
     const randomArray = Array.from({ length: size }, () => faker.lorem.word());
 
     expect(isArray(randomArray)).toBe(true);

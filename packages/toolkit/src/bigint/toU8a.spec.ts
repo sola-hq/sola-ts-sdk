@@ -9,59 +9,59 @@ export const TESTS: [
   numarr: number[],
   strval: string,
 ][] = [
-  // LE, positive numbers
-  [true, false, [0x12], '18'],
-  [true, false, [0x12, 0x34], '13330'],
-  [true, false, [0x12, 0x34, 0x56], '5649426'],
-  [true, false, [0x12, 0x34, 0x56, 0x78], '2018915346'],
-  [true, false, [0x12, 0x34, 0x56, 0x78, 0x9a], '663443878930'],
-  [true, false, [0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc], '207371629900818'],
-  [
-    true,
-    false,
+    // LE, positive numbers
+    [true, false, [0x12], '18'],
+    [true, false, [0x12, 0x34], '13330'],
+    [true, false, [0x12, 0x34, 0x56], '5649426'],
+    [true, false, [0x12, 0x34, 0x56, 0x78], '2018915346'],
+    [true, false, [0x12, 0x34, 0x56, 0x78, 0x9a], '663443878930'],
+    [true, false, [0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc], '207371629900818'],
     [
-      0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78,
-      0x12, 0x34, 0x56, 0x78,
+      true,
+      false,
+      [
+        0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78,
+        0x12, 0x34, 0x56, 0x78,
+      ],
+      '159954953172672629770948536149615195154',
     ],
-    '159954953172672629770948536149615195154',
-  ],
-  // LE, positive numbers (w/ signed flag)
-  [true, true, [12], '12'],
-  [true, true, [210, 4], '1234'],
-  [true, true, [64, 226, 1], '123456'],
-  [true, true, [21, 205, 91, 7], '123456789'],
-  [true, true, [203, 36, 104, 12, 8], '34567890123'],
-  [true, true, [255, 159, 114, 78, 24, 9], '9999999999999'],
-  // LE, negative numbers
-  [true, true, [244], '-12'],
-  [true, true, [46, 251], '-1234'],
-  [true, true, [192, 29, 254], '-123456'],
-  [true, true, [255, 255, 255, 255], '-1'],
-  [true, true, [254, 255, 255, 255], '-2'],
-  [true, true, [235, 50, 164, 248], '-123456789'],
-  [true, true, [0, 0, 0, 128], '-2147483648'],
-  [true, true, [0, 0, 0, 240], '-268435456'],
-  [true, true, [65, 86, 129, 173, 254], '-5678999999'],
-  [true, true, [1, 96, 141, 177, 231, 246], '-9999999999999'],
-  [true, true, [1, 0, 156, 88, 76, 73, 31, 242], '-999999999999999999'],
-  // BE
-  [false, false, [0x12], '18'],
-  [false, false, [0x12, 0x34], '4660'],
-  [false, false, [0x12, 0x34, 0x56], '1193046'],
-  [false, false, [0x12, 0x34, 0x56, 0x78], '305419896'],
-  [false, true, [0xf2, 0x34, 0x56, 0x78], '-231451016'],
-  [false, false, [0x12, 0x34, 0x56, 0x78, 0x9a], '78187493530'],
-  [false, false, [0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc], '20015998343868'],
-  [
-    false,
-    false,
+    // LE, positive numbers (w/ signed flag)
+    [true, true, [12], '12'],
+    [true, true, [210, 4], '1234'],
+    [true, true, [64, 226, 1], '123456'],
+    [true, true, [21, 205, 91, 7], '123456789'],
+    [true, true, [203, 36, 104, 12, 8], '34567890123'],
+    [true, true, [255, 159, 114, 78, 24, 9], '9999999999999'],
+    // LE, negative numbers
+    [true, true, [244], '-12'],
+    [true, true, [46, 251], '-1234'],
+    [true, true, [192, 29, 254], '-123456'],
+    [true, true, [255, 255, 255, 255], '-1'],
+    [true, true, [254, 255, 255, 255], '-2'],
+    [true, true, [235, 50, 164, 248], '-123456789'],
+    [true, true, [0, 0, 0, 128], '-2147483648'],
+    [true, true, [0, 0, 0, 240], '-268435456'],
+    [true, true, [65, 86, 129, 173, 254], '-5678999999'],
+    [true, true, [1, 96, 141, 177, 231, 246], '-9999999999999'],
+    [true, true, [1, 0, 156, 88, 76, 73, 31, 242], '-999999999999999999'],
+    // BE
+    [false, false, [0x12], '18'],
+    [false, false, [0x12, 0x34], '4660'],
+    [false, false, [0x12, 0x34, 0x56], '1193046'],
+    [false, false, [0x12, 0x34, 0x56, 0x78], '305419896'],
+    [false, true, [0xf2, 0x34, 0x56, 0x78], '-231451016'],
+    [false, false, [0x12, 0x34, 0x56, 0x78, 0x9a], '78187493530'],
+    [false, false, [0x12, 0x34, 0x56, 0x78, 0x9a, 0xbc], '20015998343868'],
     [
-      0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78,
-      0x12, 0x34, 0x56, 0x78,
+      false,
+      false,
+      [
+        0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78,
+        0x12, 0x34, 0x56, 0x78,
+      ],
+      '24197857161011715162171839636988778104',
     ],
-    '24197857161011715162171839636988778104',
-  ],
-];
+  ];
 
 describe('nToU8a', (): void => {
   describe('conversion tests', (): void => {
@@ -106,7 +106,7 @@ describe('nToU8a', (): void => {
   });
 
   it('should handle faker generated positive numbers', () => {
-    const num = faker.number.int({ min: 0, max: Number.MAX_SAFE_INTEGER });
+    const num = faker.number.int({ max: Number.MAX_SAFE_INTEGER, min: 0 });
     const u8a = nToU8a(num);
 
     expect(u8a).toBeInstanceOf(Uint8Array);
@@ -114,7 +114,7 @@ describe('nToU8a', (): void => {
   });
 
   it('should handle faker generated negative numbers', () => {
-    const num = faker.number.int({ min: Number.MIN_SAFE_INTEGER, max: -1 });
+    const num = faker.number.int({ max: -1, min: Number.MIN_SAFE_INTEGER });
     const u8a = nToU8a(num, { isNegative: true });
 
     expect(u8a).toBeInstanceOf(Uint8Array);
@@ -122,8 +122,8 @@ describe('nToU8a', (): void => {
   });
 
   it('should handle faker generated numbers with specific bitLength', () => {
-    const num = faker.number.int({ min: 0, max: 100000 });
-    const bitLength = faker.number.int({ min: 8, max: 64, multipleOf: 8 });
+    const num = faker.number.int({ max: 100000, min: 0 });
+    const bitLength = faker.number.int({ max: 64, min: 8, multipleOf: 8 });
     const u8a = nToU8a(num, { bitLength });
 
     expect(u8a).toBeInstanceOf(Uint8Array);

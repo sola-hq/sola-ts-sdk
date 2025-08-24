@@ -33,10 +33,10 @@ describe('hexFixLength', (): void => {
   });
 
   it('should handle faker generated hex strings that need trimming', () => {
-    const originalLength = faker.number.int({ min: 5, max: 10 }) * 2; // Even length
+    const originalLength = faker.number.int({ max: 10, min: 5 }) * 2; // Even length
     const hexString = faker.string.hexadecimal({ length: originalLength + 2 });
     const targetLength =
-      faker.number.int({ min: 1, max: originalLength / 2 }) * 2; // Smaller even length
+      faker.number.int({ max: originalLength / 2, min: 1 }) * 2; // Smaller even length
     const bitLength = targetLength * 4;
     const expected = `0x${hexString.slice(-targetLength)}`;
 
@@ -44,14 +44,14 @@ describe('hexFixLength', (): void => {
   });
 
   it('should handle faker generated hex strings that need padding', () => {
-    const originalHexChars = faker.number.int({ min: 1, max: 5 }) * 2; // Even number of hex characters
+    const originalHexChars = faker.number.int({ max: 5, min: 1 }) * 2; // Even number of hex characters
     const hexString = faker.string.hexadecimal({
       length: originalHexChars + 2,
     }); // +2 for 0x prefix
     const targetHexChars =
       faker.number.int({
-        min: originalHexChars + 1,
         max: originalHexChars + 5,
+        min: originalHexChars + 1,
       }) * 2; // Larger even number of hex characters
     const bitLength = targetHexChars * 4;
     const strLength = Math.ceil(bitLength / 4);

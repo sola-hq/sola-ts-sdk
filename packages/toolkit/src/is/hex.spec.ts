@@ -22,8 +22,8 @@ describe('isHex', (): void => {
 
   it('returns false on hex values (non % 2)', (): void => {
     const oddLengthHex = faker.string.hexadecimal({
-      length: 11,
       casing: 'lower',
+      length: 11,
     });
 
     console.log('oddLengthHex : ', oddLengthHex);
@@ -31,7 +31,7 @@ describe('isHex', (): void => {
   });
 
   it('returns true on uppercase values', (): void => {
-    const test = faker.string.hexadecimal({ length: 8, casing: 'upper' });
+    const test = faker.string.hexadecimal({ casing: 'upper', length: 8 });
 
     expect(isHex(test)).toEqual(true);
   });

@@ -1,0 +1,8 @@
+{
+  "extends": "@sola-hq/tsconfig/base.json",
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "composite": true,
+    "resolveJsonModule": true
+  }
+}

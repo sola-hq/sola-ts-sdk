@@ -39,13 +39,13 @@ describe('bnToBn', (): void => {
   });
 
   it('should handle faker generated numbers', (): void => {
-    const number = faker.number.int({ min: 1, max: 1000 });
+    const number = faker.number.int({ max: 1000, min: 1 });
 
     expect(bnToBn(number).toNumber()).toEqual(number);
   });
 
   it('should handle faker generated strings', (): void => {
-    const numberString = faker.number.int({ min: 1, max: 1000 }).toString();
+    const numberString = faker.number.int({ max: 1000, min: 1 }).toString();
 
     expect(bnToBn(numberString).toNumber()).toEqual(parseInt(numberString));
   });

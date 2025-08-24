@@ -26,10 +26,10 @@ describe('isU8a', (): void => {
   });
 
   it('should handle faker generated Uint8Array values', () => {
-    const size = faker.number.int({ min: 0, max: 100 });
+    const size = faker.number.int({ max: 100, min: 0 });
     const randomBytes = new Uint8Array(
       Array.from({ length: size }, () =>
-        faker.number.int({ min: 0, max: 255 }),
+        faker.number.int({ max: 255, min: 0 }),
       ),
     );
 

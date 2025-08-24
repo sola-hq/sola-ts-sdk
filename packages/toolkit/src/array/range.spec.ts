@@ -19,7 +19,7 @@ describe('arrayRange', (): void => {
   });
 
   it('should handle faker generated sizes', (): void => {
-    const size = faker.number.int({ min: 1, max: 10 });
+    const size = faker.number.int({ max: 10, min: 1 });
     const result = range(size);
 
     expect(result.length).toBe(size);
@@ -28,8 +28,8 @@ describe('arrayRange', (): void => {
   });
 
   it('should handle faker generated offsets', (): void => {
-    const size = faker.number.int({ min: 1, max: 5 });
-    const offset = faker.number.int({ min: 1, max: 10 });
+    const size = faker.number.int({ max: 5, min: 1 });
+    const offset = faker.number.int({ max: 10, min: 1 });
     const result = range(size, offset);
 
     expect(result.length).toBe(size);

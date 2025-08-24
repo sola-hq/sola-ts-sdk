@@ -46,14 +46,14 @@ describe('u8aToBn', (): void => {
   });
 
   describe('length tests', (): void => {
-    [true, false].forEach((isLe) => {
+    [true, false].forEach(isLe => {
       for (let i = 1; i < 32; i++) {
         const tu8a = [
           0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56,
           0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34,
           0x56, 0x78, 0x12, 0x34, 0x56, 0x78, 0x12, 0x34, 0x56, 0x78,
         ];
-        const tstr = tu8a.map((n) => n.toString(16));
+        const tstr = tu8a.map(n => n.toString(16));
 
         it(`converts values with bitLength=${i * 8}, isLe=${isLe}`, (): void => {
           expect(
@@ -79,14 +79,14 @@ describe('u8aToBn', (): void => {
   });
 
   it('should handle faker generated positive Uint8Array', () => {
-    const num = faker.number.int({ min: 0, max: Number.MAX_SAFE_INTEGER });
+    const num = faker.number.int({ max: Number.MAX_SAFE_INTEGER, min: 0 });
     const u8a = bnToU8a(num, { isLe: true });
 
     expect(u8aToBn(u8a, { isLe: true }).toNumber()).toEqual(num);
   });
 
   it('should handle faker generated negative Uint8Array', () => {
-    const num = faker.number.int({ min: Number.MIN_SAFE_INTEGER, max: -1 });
+    const num = faker.number.int({ max: -1, min: Number.MIN_SAFE_INTEGER });
     const u8a = bnToU8a(num, { isLe: true, isNegative: true });
 
     expect(u8aToBn(u8a, { isLe: true, isNegative: true }).toNumber()).toEqual(

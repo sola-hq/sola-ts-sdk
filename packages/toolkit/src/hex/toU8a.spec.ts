@@ -51,7 +51,7 @@ describe('hexToU8a', (): void => {
   });
 
   it('converts a random hex string to Uint8Array', (): void => {
-    const randomHex = faker.string.hexadecimal({ length: 32, casing: 'lower' });
+    const randomHex = faker.string.hexadecimal({ casing: 'lower', length: 32 });
 
     // Convert hex string to expected Uint8Array manually
     const hexWithoutPrefix = randomHex.slice(2); // Remove '0x' prefix
@@ -62,7 +62,7 @@ describe('hexToU8a', (): void => {
     }
 
     const expectedU8a = new Uint8Array(
-      bytePairs.map((byte) => parseInt(byte, 16)),
+      bytePairs.map(byte => parseInt(byte, 16)),
     );
 
     expect(hexToU8a(randomHex)).toEqual(expectedU8a);

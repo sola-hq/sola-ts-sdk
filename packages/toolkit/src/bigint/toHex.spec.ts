@@ -39,14 +39,14 @@ describe('nToHex', (): void => {
   });
 
   it('should handle faker generated positive numbers', (): void => {
-    const positiveNumber = faker.number.int({ min: 1, max: 1000 });
+    const positiveNumber = faker.number.int({ max: 1000, min: 1 });
     const hexResult = nToHex(positiveNumber);
 
     expect(hexResult.startsWith('0x')).toBe(true);
   });
 
   it('should handle faker generated negative numbers', (): void => {
-    const negativeNumber = faker.number.int({ min: -1000, max: -1 });
+    const negativeNumber = faker.number.int({ max: -1, min: -1000 });
     const hexResult = nToHex(negativeNumber, { isNegative: true });
 
     expect(hexResult.startsWith('0x')).toBe(true);
