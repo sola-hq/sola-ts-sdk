@@ -1,6 +1,6 @@
 {
   "name": "@sola-hq/bitcoin",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Sola SDK for bitcoin",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
